@@ -1,0 +1,17 @@
+galaxy_info:
+  role_name: bsd_autoupdate
+  author: Jan Langrehr
+  description: Setups an PKG autoupdate mechanism utilizing Cron
+  namespace: strgalt_t
+  license: license (GPL-3.0-only)
+  min_ansible_version: "2.10"
+  platforms:
+    - name: FreeBSD
+      versions:
+        - "13.0"
+        - "13.1"
+        - "13.2"
+  galaxy_tags:
+    - freebsd
+    - security
+    - pkg
