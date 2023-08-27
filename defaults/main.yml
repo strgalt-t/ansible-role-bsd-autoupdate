@@ -1,0 +1,10 @@
+---
+# defaults file for bsd-autoupdate
+# directory where to save the pkg-autoupdate script
+script_dir: /root/bin
+# Cron settings when the pkg-autoupdate script should run
+# by default: every day at midnight
+cron_month: '*'
+cron_weekday: '*'
+cron_hour: 0
+cron_minute: 0

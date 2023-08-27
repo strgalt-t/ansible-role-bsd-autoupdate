@@ -1,0 +1,31 @@
+---
+# tasks file for bsd-autoupdate
+- name: Create directory for upgrade script
+  ansible.builtin.file:
+    path: "{{ script_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  become: true
+
+- name: Copy pkg-upgrade script to remote
+  ansible.builtin.copy:
+    src: files/pkg-upgrade.sh
+    dest: "{{ script_dir }}/pkg-upgrade.sh"
+    owner: root
+    group: root
+    mode: '0755'
+  become: true
+
+- name: Create pkg-upgrade cronjob
+  ansible.builtin.cron:
+    name: pgk autoupdate
+    month: "{{ cron_month }}"
+    weekday: "{{ cron_weekday }}"
+    hour: "{{ cron_hour }}"
+    minute: "{{ cron_minute }}"
+    user: root
+    job: "/bin/sh {{ script_dir }}/pkg-upgrade.sh"
+    cron_file: pkg-upgrade
+  become: true
